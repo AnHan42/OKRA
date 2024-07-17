@@ -76,8 +76,8 @@ def serialize_matrix_client(client_id, matrix):
 
     header = struct.pack('!4I1Q', client_id, rows, cols, matrix_type, len(matrix_data))
     return header + matrix_data
-
-def get_data(n_samples, party_id, n_features): 
+    
+def get_data(n_samples, party_id, max_parties, n_features): 
     """
     Get a partition of data for a particular party.
 
@@ -85,9 +85,9 @@ def get_data(n_samples, party_id, n_features):
     :param party_id: the identifier of the party requesting the data
     :return: a partition of the data set containing n_samples/party_id samples
     """
-    temp = n_samples * party_id
+    temp = n_samples * max_parties
     training_data, y = make_classification(n_samples=temp, n_features=n_features, random_state=42, shuffle=False)
-    partitions = np.split(training_data, party_id)
+    partitions = np.split(training_data, max_parties)
     x = partitions[party_id-1]
     return x
 
@@ -186,5 +186,6 @@ if __name__ == "__main__":
     parser.add_argument("--base_port", type=int, default=8000, help="port to connect to")
     parser.add_argument("--party_id", type=int, default=1, help="ID of input party this python file simulates")
     parser.add_argument("--n_samples", type=int, default=1000, help="dataset size for one party")
+    parser.add_argument("--max_parties", type=int, default=3, help="number of clients in total")
     args = parser.parse_args()
     send_data(args)
