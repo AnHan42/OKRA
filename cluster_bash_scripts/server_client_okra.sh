@@ -24,7 +24,7 @@ do
         for party_id in $(seq 1 $3)
         do
             echo "Starting client with arguments: --mask $2 --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port"
-            python -u client_classification.py --mask $2 --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port &
+            python -u client_classification.py --mask $2 --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port --max_parties $parties &
 	    sleep 0.1
         done
 
