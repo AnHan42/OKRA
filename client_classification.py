@@ -180,7 +180,7 @@ def send_data(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument("--run", type=int, default=3, help="the number of clients to listen for")
-    parser.add_argument("--mask", type=str, default="FLAKE", help="FLAKE or OKRA")
+    parser.add_argument("--mask", type=str, default="OKRA", help="FLAKE or OKRA")
     parser.add_argument("--n_features", type=int, default=1000, help="no of features")
     parser.add_argument("--k", type=int, default=10)
     parser.add_argument("--base_port", type=int, default=8000, help="port to connect to")
