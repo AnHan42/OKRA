@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#arguments $1 no of runs $2 OKRA/FLAKE $3 No Imput Party $4 base port 
+#arguments $1 no of runs $32 No Imput Party $3 base port 
 
 # List of feature values
 feature_values=("196608" "3145728")
@@ -13,18 +13,18 @@ do
     for i in $(seq 1 $1)
     do
         # Start Server.py
-        base_port=$4
+        base_port=$3
         port=$((base_port+i-1))
 
-        python -u server_classification.py --num_clients $3 --base_port $port &
+        python -u server_classification.py --num_clients $2 --base_port $port &
 
         sleep 4
 
         # Start clients
-        for party_id in $(seq 1 $3)
+        for party_id in $(seq 1 $2)
         do
-            echo "Starting client with arguments: --mask $2 --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port"
-            python -u client_classification.py --mask $2 --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port --max_parties $parties &
+            echo "Starting client with arguments: --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port"
+            python -u client_classification.py --n_features $features --k 10 --party_id $party_id --n_samples 400 --base_port $port --max_parties $parties &
 	    sleep 0.1
         done
 
