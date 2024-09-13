@@ -126,12 +126,9 @@ def send_data(args):
     ts1 = time.time()
 
     n_features = training_data.shape[1] 
-    if args.mask == "FLAKE":
-        N = Kernel_lib.random_matrix(n_features + args.k, n_features) 
-        data_prime = Kernel_lib.generate_data_prime(training_data, N)
-    else:
-        gamma = Kernel_lib.get_gamma(n_features, args.k, seed=42)
-        data_prime = training_data @ gamma.T
+
+    gamma = Kernel_lib.get_gamma(n_features, args.k, seed=42)
+    data_prime = training_data @ gamma.T
     
     ts2 = time.time()
     masking_time = ts2-ts1
@@ -180,7 +177,6 @@ def send_data(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument("--run", type=int, default=3, help="the number of clients to listen for")
-    parser.add_argument("--mask", type=str, default="OKRA", help="FLAKE or OKRA")
     parser.add_argument("--n_features", type=int, default=1000, help="no of features")
     parser.add_argument("--k", type=int, default=10)
     parser.add_argument("--base_port", type=int, default=8000, help="port to connect to")
