@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#arguments $1 no of runs $32 No Imput Party $3 base port 
+#arguments $1 no of runs $2 No Imput Party $3 base port 
 
 # List of feature values
 feature_values=("196608" "3145728")
