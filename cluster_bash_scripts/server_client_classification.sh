@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#arguments $1 no of runs $2 OKRA/FLAKE $3 base port
+#arguments $1 no of runs $2 base port
 
 # List of feature values
 #no_inputparties=("5" "6" "7" "8" "9" "10")
@@ -23,7 +23,7 @@ do
 		#k=$(echo $random_values | cut -d' ' -f$i)
 
         # Start Server.py
-        base_port=$3
+        base_port=$2
         port=$((base_port+i+100))
 
         python -u server_classification.py --num_clients $parties --base_port $port --n_samples 400 &
@@ -33,7 +33,7 @@ do
         # Start clients
         for party_id in $(seq 1 $parties)
         do
-            python -u client_classification.py --mask $2 --n_features 30 --k 1 --party_id $party_id --n_samples 400 --base_port $port --max_parties $parties
+            python -u client_classification.py --n_features 30 --k 1 --party_id $party_id --n_samples 400 --base_port $port --max_parties $parties
             sleep 0.1 
         done
 
