@@ -20,7 +20,7 @@ Make sure sklearn, numpy, and scipy are installed.
 ## Functionality
 
 - Random Matrix Generation: Create random matrices for encoding.
-- Data Transformation: Transform data with random matrices for secure encoding.
+- Data Transformation: Map data into private space with Orthogonal k-frames for secure encoding.
 - Custom Kernel Computation: Compute Gram matrices for various kernel methods.
 
 ## Client-Server Architecture
