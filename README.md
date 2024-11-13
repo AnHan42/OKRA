@@ -1,13 +1,4 @@
-# OKRA
-Code for the Paper: Private, Efficient and Scalable Kernel Learning for Medical Image Analysis
-
-Encoding Data with (sparse, semi-)Orthogonal K-fRAmes
-
-Data Used in this Work: 
-
-
-
-# OKRA: Private, Efficient, and Scalable Kernel Learning for Medical Image Analysis
+# OKRA: Encoding Data with (sparse, semi-)Orthogonal K-fRAmes
 
 This repository provides code to implement *OKRA*: a secure and efficient kernel learning framework developed for privacy-preserving analysis in medical imaging. OKRA encodes data using (sparse, semi-)Orthogonal K-frames to support effective, scalable learning in sensitive data environments:
 
