@@ -10,11 +10,11 @@ THis is the code for the paper: [Private, Efficient and Scalable Kernel Learning
 
 Clone the repository and install dependencies:
 
-bash
+```bash
 git clone https://github.com/your-repo/kernel_lib.git
 cd kernel_lib
 pip install -r requirements.txt
-
+```
 Make sure sklearn, numpy, and scipy are installed.
 
 ## Functionality
